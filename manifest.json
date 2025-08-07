@@ -1,6 +1,11 @@
 {
   "files": [
-    "eirb-data/eirabo2-jou.tsv",
-    "eirb-data/eirabo2-ge.tsv"
+    { "path": "eirb-data/eirabo2-jou.tsv", "name": "2年上" },
+    { "path": "eirb-data/eirabo2-u1.tsv", "name": "2年Unit1" },
+    { "path": "eirb-data/eirabo2-u2.tsv", "name": "2年Unit2" },
+    { "path": "eirb-data/eirabo2-u3.tsv", "name": "2年Unit3" },
+    { "path": "eirb-data/eirabo2-u3A.tsv", "name": "2年Unit3A" },
+    { "path": "eirb-data/eirabo2-u4.tsv", "name": "2年Unit4" },
+    { "path": "eirb-data/eirabo2-ge.tsv", "name": "2年下" }
   ]
 }
