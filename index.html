@@ -706,7 +706,7 @@
         }).filter(word => word !== null);
       }
       
-      function openRepoModal() {
+     function openRepoModal() {
         const modal = document.getElementById('repoModal');
         const fileListDiv = document.getElementById('repoFileList');
         modal.style.display = 'flex';
@@ -733,10 +733,10 @@
             }
             const ul = document.createElement('ul');
             ul.className = 'repo-file-list';
-            data.files.forEach(filename => {
+            data.files.forEach(fileInfo => {
               const li = document.createElement('li');
-              li.textContent = filename;
-              li.onclick = () => loadFileFromRepo(filename);
+              li.textContent = fileInfo.name;
+              li.onclick = () => loadFileFromRepo(fileInfo.path, fileInfo.name);
               ul.appendChild(li);
             });
             fileListDiv.innerHTML = '';
@@ -753,16 +753,16 @@
         modal.style.display = 'none';
       }
 
-      async function loadFileFromRepo(filename) {
+      async function loadFileFromRepo(filePath, displayName) {
         try {
-          const response = await fetch(`./${filename}`);
+          const response = await fetch(`./${filePath}`);
           if (!response.ok) {
-            throw new Error(`ファイル'${filename}'を読み込めませんでした。`);
+            throw new Error(`ファイル'${filePath}'を読み込めませんでした。`);
           }
           const text = await response.text();
           const words = parseTsv(text);
           if (words.length > 0) {
-            dynamicLists.push({ id: Date.now(), name: filename, words });
+            dynamicLists.push({ id: Date.now(), name: displayName, words });
             saveState();
             closeRepoModal();
             showHomePage();
